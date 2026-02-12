@@ -283,3 +283,9 @@ for i in range(p):
 print(psb, maxNums)'''
 
 ''' OJ 14'''
+n = int(input())
+y, m, d = input().split('-')
+days =  int(d)
+if (n < days):
+    d = str(days - n)
+    
