@@ -283,6 +283,7 @@ for i in range(p):
 print(psb, maxNums)'''
 
 ''' OJ 14 
+
 暂时不会
 '''
 
@@ -394,6 +395,7 @@ for _ in range(T):
         item = str(number)'''
 
 ''' OJ 23
+
 暂时不会
 '''
 
@@ -416,3 +418,70 @@ for i in range(n // 3):
         for k in range(n * 2):
             if 3 * i + 2 * j +  k // 2 == n and i + j + k == n and k % 2 == 0:
                 print(i, j, k)'''
+
+''' 例 4.1.1
+T = int(input())
+for _ in range(T):
+    n, *a = map(int, input().split())
+    a = list(map(int, a))
+    avg = float(sum(a) / len(a))
+    sumNum = 0.0
+    for i in range(n):
+        number = (a[i] - avg) * (a[i] - avg)
+        sumNum += number
+    S = math.sqrt(sumNum / n)
+    print(f"{S:.5f}")'''
+
+''' 例 4.1.2 # 这一题第一版书上的过程太逆天了，第二版还一字不改，真该死
+n = int(input())
+l = []
+for i in range(1,n + 1):
+    sumNum = 0 # 用来计算真因子的和
+    for j in range(1, i//2 + 1):
+        if i % j == 0: # 如果这个数(j)是真因子，就累加起来
+            sumNum += j
+    if sumNum == i: # 如果真因子加起来是这个数，就加到列表里
+        l.append(i)
+print(f"{n}:",end = '')
+if len(l) != 0: # 把列表里的完数全输出出来
+    for i in range(len(l)):
+        print(" %d"%l[i], end = '')
+else:
+    print(" NULL")'''
+
+''' 例 4.2.1
+l = list(map(int, input().split())) # 把输入的一行字符串转换成int型的list
+l.sort(reverse=True)
+print(*l)'''
+
+''' 例 4.2.2
+n = input()
+l = len(n) # l是数的位数
+print(l,end = '')
+for i in range(l): # 正向输出
+    print(',',n[i],end = '',sep='') # 每个元素之前加个,
+for i in range(l-1,-1,-1):
+    print(',',n[i],end = '',sep='')'''
+
+''' 例 4.2.3 # 这一题真有点难了，去b站学了一会才会
+n = int(input()) 
+l = [True] * (n + 1) # 索引从1开始，0作废，所以要n + 1个位置
+left = n # 剩余人数
+times = 1 # 用来判断是不是第三个人，通过模3来判断，只有元素是True才+1
+index = 1 # 列表的索引，每次必+1
+while(left > 1): # 剩余人数不是1就一直循环
+    if l[index] != False: # 如果当前元素尚未出圈
+        if times % 3 == 0: # 且正好该被出圈
+            l[index] = False # 就给它出圈
+            left -= 1 # 剩余人-1
+            if left == 1: # 如果只剩一个了，直接找到并输出然后结束
+                for i in range(1, n + 1):
+                    if l[i] == True:
+                        print(i)
+                        break
+                break
+        times += 1 # 判断到未出圈的元素之后，才能继续+1来判断下一个元素该不该出圈，出圈的直接无视掉
+    index += 1 # 无论该不该出圈，列表总得往下走
+    if index > n: # 如果越界了，就从1开始重新走
+        index = 1'''
+
